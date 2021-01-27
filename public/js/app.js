@@ -1906,7 +1906,7 @@ __webpack_require__.r(__webpack_exports__);
     addProduct: function addProduct() {
       var _this = this;
 
-      this.axios.post('http://localhost:8000/api/products', this.product).then(function (response) {
+      this.axios.post('api/products', this.product).then(function (response) {
         return _this.$router.push({
           name: 'home'
         });
@@ -1962,7 +1962,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.axios.get("http://localhost:8000/api/products/".concat(this.$route.params.id)).then(function (res) {
+    this.axios.get("api/products/".concat(this.$route.params.id)).then(function (res) {
       _this.product = res.data;
     });
   },
@@ -1970,7 +1970,7 @@ __webpack_require__.r(__webpack_exports__);
     updateProduct: function updateProduct() {
       var _this2 = this;
 
-      this.axios.patch("http://localhost:8000/api/products/".concat(this.$route.params.id), this.product).then(function (res) {
+      this.axios.patch("api/products/".concat(this.$route.params.id), this.product).then(function (res) {
         _this2.$router.push({
           name: 'home'
         });
@@ -2031,7 +2031,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.axios.get('http://localhost:8000/api/products/').then(function (response) {
+    this.axios.get('api/products/').then(function (response) {
       _this.products = response.data;
     });
   },
@@ -2039,7 +2039,7 @@ __webpack_require__.r(__webpack_exports__);
     deleteProduct: function deleteProduct(id) {
       var _this2 = this;
 
-      this.axios["delete"]("http://localhost:8000/api/products/".concat(id)).then(function (response) {
+      this.axios["delete"]("api/products/".concat(id)).then(function (response) {
         var i = _this2.products.map(function (data) {
           return data.id;
         }).indexOf(id);
@@ -2074,19 +2074,28 @@ __webpack_require__.r(__webpack_exports__);
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-alert("Vue version : ".concat(Vue.version)); //return false
-
-
-
-
-
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ */
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+
+
+
+
 
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_4__.default);
 Vue.use((vue_axios__WEBPACK_IMPORTED_MODULE_1___default()), (axios__WEBPACK_IMPORTED_MODULE_2___default()));
